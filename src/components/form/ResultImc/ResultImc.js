@@ -11,18 +11,13 @@ export const ResultImg = (props) => {
 
     return (
         <View style={styles.resultImg}>
-            <View style={styles.boxShare}>
-                {props.resultImc !== null && (
-                    <TouchableOpacity
-                        style={styles.shareButton}
-                        onPress={onShare}
-                    >
-                        <Text style={styles.textButton}>Compartilhar</Text>
-                    </TouchableOpacity>
-                )}
-            </View>
             <Text style={styles.information}>{props.messageImc}</Text>
             <Text style={styles.numberIMC}>{props.resultImc}</Text>
+            <View style={styles.boxShare}>
+                <TouchableOpacity style={styles.shareButton} onPress={onShare}>
+                    <Text style={styles.textButton}>Compartilhar</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
