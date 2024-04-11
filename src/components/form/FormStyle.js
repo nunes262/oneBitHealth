@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
     formLabel: {
         color: "black",
         fontSize: 18,
+        letterSpacing: 2,
         fontWeight: "bold",
     },
     input: {
@@ -28,19 +29,18 @@ export const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: "#f6f6f6",
         borderRadius: 10,
-        borderColor: "black",
     },
     textButton: {
         color: "#fff",
-        fontSize: 20
+        fontSize: 20,
     },
     ButtonCalculate: {
-        borderRadius: 30,
+        borderRadius: 10,
         alignItems: "center",
         justifyContent: "center",
         width: "90%",
         height: 40,
         backgroundColor: "#FF0043",
         margin: 12,
-    }
+    },
 });

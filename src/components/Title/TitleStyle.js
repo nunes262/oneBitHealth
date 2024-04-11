@@ -4,10 +4,10 @@ export const styles = StyleSheet.create({
     boxTitle: {
         justifyContent: "center",
         alignItems: "center",
-        padding: 10,
+        padding: 30,
     },
     textTitle: {
-        fontSize: 20,
+        fontSize: 32,
         fontWeight: "bold",
         color: "red",
     },

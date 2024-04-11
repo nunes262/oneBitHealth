@@ -1,5 +1,11 @@
-import React from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import {
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+    Keyboard,
+} from "react-native";
 import { ResultImg } from "../ResultImc/ResultImc";
 import { styles } from "./FormStyle";
 
@@ -11,7 +17,17 @@ export const Form = () => {
     const [textButton, setTextButton] = useState("Calcular");
 
     const calculateImc = () => {
-        setImc((weight / (hight * hight)).toFixed(2));
+        if (weight != null && hight != null) {
+            setImc(
+                (weight / (parseFloat(hight) * parseFloat(hight))).toFixed(2)
+            );
+            setMessageImc("Seu IMC é:");
+            setTextButton("Calcular Novamente");
+        } else {
+            setMessageImc("Altura ou peso inválidos");
+            setTextButton("Calcular");
+        }
+        Keyboard.dismiss();
     };
 
     const validate = () => {
@@ -19,8 +35,6 @@ export const Form = () => {
             calculateImc();
             setHight(null);
             setWeight(null);
-            setMessageImc("Seu IMC é:");
-            setTextButton("Calcular Novamente");
             return;
         }
         setImc(null);
@@ -49,7 +63,7 @@ export const Form = () => {
                     keyboardType="numeric"
                 />
                 <TouchableOpacity
-                    onPress={() => validate()}
+                    onPress={validate}
                     style={styles.ButtonCalculate}
                 >
                     <Text style={styles.textButton}>{textButton}</Text>
