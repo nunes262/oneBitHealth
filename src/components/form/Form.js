@@ -7,9 +7,10 @@ import {
     Keyboard,
     Vibration,
     Pressable,
+    FlatList,
 } from "react-native";
-import { ResultImg } from "../ResultImc/ResultImc";
 import { styles } from "./FormStyle";
+import { ResultImg } from "./ResultImc/ResultImc";
 
 export const Form = () => {
     const [hight, setHight] = useState(null);
@@ -18,10 +19,16 @@ export const Form = () => {
     const [imc, setImc] = useState(null);
     const [textButton, setTextButton] = useState("Calcular");
     const [errosMensage, setErrorsMensage] = useState(null);
+    const [imcList, setImcList] = useState([]);
 
     const calculateImc = () => {
         let heightFormat = hight.replace(",", ".");
-        return setImc((weight / (heightFormat * heightFormat)).toFixed(2));
+        let totalImc = (weight / (heightFormat * heightFormat)).toFixed(2);
+        setImcList((arr) => [
+            ...arr,
+            { id: new Date().getTime(), imc: totalImc },
+        ]);
+        setImc(totalImc);
     };
 
     const verificationIMC = () => {
@@ -32,6 +39,7 @@ export const Form = () => {
     };
 
     const validate = () => {
+        console.log(imcList);
         if (hight != null && weight != null) {
             calculateImc();
             setHight(null);
@@ -88,6 +96,22 @@ export const Form = () => {
                     </TouchableOpacity>
                 </View>
             )}
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                style={styles.listImc}
+                data={imcList.reverse()}
+                key={({ item }) => item.id}
+                renderItem={({ item }) => {
+                    return (
+                        <Text style={styles.ResultImcItem}>
+                            <Text style={styles.textResultItem}>
+                                Resultado IMC =
+                            </Text>
+                            {item.imc}
+                        </Text>
+                    );
+                }}
+            />
         </View>
     );
 };

@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     resultImg: {
-        flex: 1,
         marginTop: 15,
         paddingTop: 30,
         borderRadius: 20,

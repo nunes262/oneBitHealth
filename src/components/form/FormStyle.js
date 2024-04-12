@@ -50,7 +50,18 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     exibitResult: {
+        padding: 20,
         width: "100%",
-        height: "50%",
+        height: "40%",
+    },
+    ResultImcItem: {
+        fontSize: 26,
+        color: "red",
+        height: 50,
+        width: "100%",
+        padding: 10,
+    },
+    textResultItem: {
+        fontSize: 16,
     },
 });
